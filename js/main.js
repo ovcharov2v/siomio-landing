@@ -210,35 +210,42 @@ __webpack_require__.r(__webpack_exports__);
 gsap__WEBPACK_IMPORTED_MODULE_2__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__["ScrollTrigger"]);
 var mm = gsap__WEBPACK_IMPORTED_MODULE_2__["default"].matchMedia();
 mm.add('(min-width: 1024px)', function () {
-  gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__["ScrollTrigger"].create({
-    trigger: ".main",
-    start: "1px top",
-    toggleActions: "restart none none reverse",
-    snap: {
-      snapTo: 1 / 3,
-      duration: .5,
-      delay: 0.0,
-      ease: "none"
-    }
-  });
   var sections = document.querySelectorAll('.section--hero, .section--swipe');
   sections.forEach(function (section, index) {
     gsap__WEBPACK_IMPORTED_MODULE_2__["default"].timeline().to(section, {
-      y: function y() {
-        return window.innerHeight;
-      },
       scale: .8,
       rotate: 15,
-      opacity: 0,
-      duration: .5,
+      ease: "linear",
+      y: 300,
+      scrollTrigger: {
+        trigger: section,
+        pinSpacing: false,
+        pin: true,
+        pinnedContainer: ".main",
+        start: '1% top',
+        end: "220% center",
+        scrub: 1,
+        anticipatePin: 1,
+        toggleActions: "restart none none reset"
+        //markers: true,
+      }
+    });
+  });
+
+  sections.forEach(function (section, index) {
+    gsap__WEBPACK_IMPORTED_MODULE_2__["default"].timeline().to(section, {
       ease: "linear",
       scrollTrigger: {
         trigger: section,
+        pinnedContainer: ".main",
         start: '1% top',
-        toggleClass: "active",
-        scrub: 1,
-        toggleActions: "restart none none reset"
         //markers: true,
+        onLeave: function onLeave() {
+          section.classList.add('v-hide');
+        },
+        onEnterBack: function onEnterBack() {
+          section.classList.remove('v-hide');
+        }
       }
     });
   });
