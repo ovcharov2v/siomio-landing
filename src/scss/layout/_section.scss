@@ -50,7 +50,7 @@
 		}
 
 		.section--hero & {
-			overflow: unset;
+			//overflow: unset;
 		}
 	}
 
@@ -126,7 +126,7 @@
 			transform: translate(-7%, 18%) scale(1.15);
 
 			@include desktop {
-				transform: translate(7%, -9%);
+				transform: translate(7%, -51px);
 			}
 		}
 
@@ -134,7 +134,7 @@
 			transform: translate(12%, 18%) scale(1.15);
 
 			@include desktop {
-				transform: translate(10%, 7%);
+				transform: translate(10%, 44px);
 			}
 		}
 
@@ -142,7 +142,7 @@
 			transform: translate(84%, 16.3%);
 
 			@include desktop {
-				transform: translate(8%, -8.7%);
+				transform: translate(8%, -47px);
 			}
 		}
 
@@ -150,7 +150,7 @@
 			transform: translate(-70%, 15%) rotate(-13deg) scale(1.12);
 
 			@include desktop {
-				transform: translate(-16%, 25%) rotate(-13deg);
+				transform: translate(-16%, 149px) rotate(-13deg);
 			}
 		}
 	}
@@ -165,9 +165,8 @@
 
 		@include desktop {
 			bottom: -20px;
-			transform: translateX(-45%);
+			transform: translateX(-44.6%);
 		}
-
 	}
 
 	&__photo {
