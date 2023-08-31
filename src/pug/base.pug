@@ -280,10 +280,11 @@ html(class=html.classList)&attributes(html.attrs)
 		block head-end
 	body(class=body.classList)&attributes(body.attrs)
 		+header()
+		+mobileMenu()
 		block body-start
-		main.main
-			block content
-		+footer()
+			main.main#main
+				block content
+			+footer()
 		include ../images/sprite/sprite.svg
 		block scripts
 			script(src!=`${baseDir}js/vendor.js?v=${Date.now()}`)

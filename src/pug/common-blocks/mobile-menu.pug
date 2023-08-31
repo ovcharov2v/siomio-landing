@@ -1,0 +1,27 @@
+mixin mobileMenu()
+	// Mobile menu
+	.mobile-menu
+		.mobile-menu__container.container
+			nav.mobile-menu__nav
+				ul.mobile-menu__nav-list
+					li.mobile-menu__nav-elem
+						a.mobile-menu__nav-link(href="#") Продукты
+						+svg("chevron-down")(class="mobile-menu__nav-chevron")
+						ul.mobile-menu__nav-sub-list
+							li.mobile-menu__nav-sub-elem
+								a.mobile-menu__nav-link(href="#") Продукт 1
+							li.mobile-menu__nav-sub-elem
+								a.mobile-menu__nav-link(href="#") Продукт 2
+							li.mobile-menu__nav-sub-elem
+								a.mobile-menu__nav-link(href="#") Продукт 3
+							li.mobile-menu__nav-sub-elem
+								a.mobile-menu__nav-link(href="#") Продукт 4
+							li.mobile-menu__nav-sub-elem
+								a.mobile-menu__nav-link(href="#") Продукт 5
+					li.mobile-menu__nav-elem
+						a.mobile-menu__nav-link(href="#") О нас
+					li.mobile-menu__nav-elem
+						a.mobile-menu__nav-link(href="#") Советы по безопасности
+			a.button.mobile-menu__nav-button(href="#", target="_blank", rel="noreferrer") Открыть
+
+

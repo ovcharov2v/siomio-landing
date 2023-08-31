@@ -1,0 +1,87 @@
+.mobile-menu {
+	display: none;
+	position: fixed;
+	z-index: 888;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background-color: $color-white;
+	padding: 50px 0 30px;
+	transform: translateX(100%) scaleX(0);
+	transition: transform $transition-default;
+
+	&--show {
+		display: flex;
+		transform: none;
+	}
+
+	@include desktop {
+		display: none;
+	}
+
+	&__container {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__nav {
+		height: 100%;
+		overflow-y: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__nav-list {
+	}
+
+	&__nav-elem {
+		position: relative;
+	}
+
+	&__nav-link {
+		display: inline-flex;
+		align-items: center;
+		margin-bottom: 10px;
+		font-size: 18px;
+		line-height: 1;
+		font-weight: 500;
+	}
+
+	&__nav-chevron {
+		flex-shrink: 0;
+		width: 16px;
+		height: 16px;
+		margin-left: 4px;
+		margin-bottom: -2px;
+		transition: transform $transition-default;
+
+		.mobile-menu__nav-elem--expanded & {
+			transform: rotate(180deg);
+		}
+	}
+
+	&__nav-sub-list {
+		visibility: hidden;
+		max-height: 0;
+		overflow: hidden;
+		padding-left: 10px;
+		transition: max-height $transition-default;
+
+		.mobile-menu__nav-elem--expanded & {
+			visibility: visible;
+			max-height: 999px;
+		}
+	}
+
+	&__nav-sub-elem {
+	}
+
+	&__nav-button {
+		width: 100%;
+	}
+}

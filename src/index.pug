@@ -7,4 +7,46 @@ append vars
 	- title = "Siomio"
 
 block content
-	h1 Hello Siomio
+	// Section
+	section.section.section--hero
+		.section__container.container
+			.section__row
+				.section__content-box.section__content-box--with-padding
+					h1.section__title Пиши и знакомься
+					a.button.section__button(href="#", target="_blank", rel="noreferrer") Открыть
+					.section__photo-grid
+						- var j = 1
+						while j < 3
+							- var i = 1
+							while i < 8
+								-var photoClass = "section__photo"
+								if j === 2 && i === 1
+									-photoClass += " section__photo--with-gap"
+								+picture("photo" + i)(class=photoClass)
+								-i++
+							-j++
+				.section__image-box
+					+picture("img1", "png")(class="section__image section__image--n1")
+
+	// Section
+	section.section
+		.section__container.container
+			.section__row
+				.section__content-box
+					h2.section__title Свайп вправо
+					p.section__text Отмечай понравившиеся анкеты, ставь “суперлайки” и сопровождай их сообщениями.
+					a.button.section__button(href="#", target="_blank", rel="noreferrer") Открыть
+				.section__image-box
+					+picture("img2", "png")(class="section__image section__image--n2")
+					+picture("img3", "png")(class="section__image section__image--n3")
+	// Section
+	section.section
+		.section__container.container
+			.section__row
+				.section__content-box
+					h2.section__title Лайки и интересы
+					p.section__text Мы найдем лучшие анкеты- просто укажи свои интересы. Добавляй свое фото, чтобы люди могли лучше узнать тебя. И не забывай ставить лайки.
+					a.button.section__button(href="#", target="_blank", rel="noreferrer") Открыть
+				.section__image-box
+					+picture("img4", "png")(class="section__image section__image--n4")
+					+picture("img5", "png")(class="section__image section__image--n5")

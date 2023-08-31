@@ -1,3 +1,22 @@
+@mixin title {
+	font-size: 60px;
+	line-height: .75;
+	font-weight: 800;
+
+	@include desktop {
+		font-size: 70px;
+	}
+
+	@include desktop-xl {
+		font-size: 100px;
+	}
+}
+
+@mixin text {
+	font-size: 16px;
+	line-height: 22px;
+}
+
 body {
 	font-family: $font-primary;
 }

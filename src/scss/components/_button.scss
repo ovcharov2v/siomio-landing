@@ -1,0 +1,24 @@
+.button {
+	display: inline-block;
+	padding: 13px 20px;
+	border: none;
+	border-radius: 40px;
+	background-color: $color-pink;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 600;
+	color: $color-white;
+	letter-spacing: .03em;
+	text-align: center;
+	text-transform: uppercase;
+	transition: background-color $transition-default;
+
+	&:hover {
+		background-color: darken($color-pink, 10%);
+	}
+
+	&--small {
+		font-size: 11px;
+		padding: 11px 12px 10px;
+	}
+}
