@@ -19,6 +19,13 @@ body {
 	line-height: 1.3;
 }
 
+.main {
+	@include desktop {
+		height: 100vh;
+		overflow: hidden;
+	}
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

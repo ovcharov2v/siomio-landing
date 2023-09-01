@@ -1,9 +1,14 @@
 .section {
 	position: relative;
+	z-index: 0;
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+
+	@include mobile-tablet {
+		transform: none !important;
+	}
 
 	@include desktop {
 		text-align: left;

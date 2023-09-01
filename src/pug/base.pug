@@ -284,7 +284,7 @@ html(class=html.classList)&attributes(html.attrs)
 		block body-start
 			main.main#main
 				block content
-			+footer()
+				+footer()
 		include ../images/sprite/sprite.svg
 		block scripts
 			script(src!=`${baseDir}js/vendor.js?v=${Date.now()}`)
