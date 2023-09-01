@@ -188,6 +188,97 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./src/js/components/_scroll.js":
+/*!**************************************!*\
+  !*** ./src/js/components/_scroll.js ***!
+  \**************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+
+var isPaused = false;
+var currentSection = 0;
+var sections = document.querySelectorAll('.section');
+var footer = document.querySelector('.footer');
+var sectionHeroTL = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+  paused: true
+}).to([sections[1], sections[2]], {
+  y: '-100vh',
+  ease: "linear",
+  duration: .3
+}).to(sections[0], {
+  scale: .8,
+  rotate: 13,
+  ease: "linear",
+  duration: .3
+}, "-=.3").to(footer, {
+  y: '-100vh'
+}, "-=.3");
+var sectionSwipeTL = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+  paused: true
+}).to(sections[2], {
+  y: '-=100vh',
+  ease: "linear",
+  duration: .3
+}).to(sections[1], {
+  scale: .8,
+  rotate: 13,
+  ease: "linear",
+  duration: .3
+}, "-=.3").to(footer, {
+  y: '-=100vh',
+  ease: "linear",
+  duration: .3
+}, "-=.3");
+var footerTL = gsap__WEBPACK_IMPORTED_MODULE_0__["default"].timeline({
+  paused: true
+}).to(sections, {
+  y: '-=395',
+  ease: "linear",
+  duration: .3
+}).to(footer, {
+  y: '-=395',
+  ease: "linear",
+  duration: .3
+}, "-=.3");
+document.addEventListener('wheel', function (e) {
+  if (isPaused || window.innerWidth < 1024) return;
+  if (!(e.deltaY < 0 && currentSection === 0) && !(e.deltaY > 0 && currentSection === 3)) {
+    isPaused = true;
+    setTimeout(function () {
+      return isPaused = false;
+    }, 300);
+  } else return;
+  if (e.deltaY > 0) {
+    if (currentSection === 0) {
+      currentSection = 1;
+      sectionHeroTL.play();
+    } else if (currentSection === 1) {
+      currentSection = 2;
+      sectionSwipeTL.play();
+    } else {
+      currentSection = 3;
+      footerTL.play();
+    }
+  } else {
+    if (currentSection === 1) {
+      currentSection = 0;
+      sectionHeroTL.reverse();
+    } else if (currentSection === 2) {
+      currentSection = 1;
+      sectionSwipeTL.reverse();
+    } else {
+      currentSection = 2;
+      footerTL.reverse();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./src/js/main.js":
 /*!************************!*\
   !*** ./src/js/main.js ***!
@@ -201,55 +292,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _vendor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_vendor__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_mobile_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/_mobile-menu */ "./src/js/components/_mobile-menu.js");
 /* harmony import */ var _components_mobile_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_components_mobile_menu__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
+/* harmony import */ var _components_scroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/_scroll */ "./src/js/components/_scroll.js");
 
 
 
-
-gsap__WEBPACK_IMPORTED_MODULE_2__["default"].registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_3__["ScrollTrigger"]);
-var mm = gsap__WEBPACK_IMPORTED_MODULE_2__["default"].matchMedia();
-mm.add('(min-width: 1024px)', function () {
-  var sections = document.querySelectorAll('.section--hero, .section--swipe');
-  sections.forEach(function (section, index) {
-    gsap__WEBPACK_IMPORTED_MODULE_2__["default"].timeline().to(section, {
-      scale: .8,
-      rotate: 15,
-      ease: "linear",
-      y: 300,
-      scrollTrigger: {
-        trigger: section,
-        pinSpacing: false,
-        pin: true,
-        pinnedContainer: ".main",
-        start: '1% top',
-        end: "220% center",
-        scrub: 1,
-        anticipatePin: 1,
-        toggleActions: "restart none none reset"
-        //markers: true,
-      }
-    });
-  });
-
-  sections.forEach(function (section, index) {
-    gsap__WEBPACK_IMPORTED_MODULE_2__["default"].timeline().to(section, {
-      ease: "linear",
-      scrollTrigger: {
-        trigger: section,
-        pinnedContainer: ".main",
-        start: '1% top',
-        //markers: true,
-        onLeave: function onLeave() {
-          section.classList.add('v-hide');
-        },
-        onEnterBack: function onEnterBack() {
-          section.classList.remove('v-hide');
-        }
-      }
-    });
-  });
-});
 
 /***/ }),
 
